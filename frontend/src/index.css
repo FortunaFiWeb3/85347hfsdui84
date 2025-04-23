@@ -1,0 +1,132 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root.theme-dark {
+  @apply bg-slate-950 text-white;
+}
+
+:root.theme-light {
+  @apply bg-white text-black;
+}
+
+body {
+  @apply font-sans transition-colors duration-300 ease-in-out;
+}
+
+@keyframes ping-once {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.25);
+      opacity: 0.7;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .animate-ping-once {
+    animation: ping-once 0.3s ease-in-out;
+  }
+ 
+  @keyframes ping-once {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.25); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  .animate-ping-once {
+    animation: ping-once 0.3s ease-in-out;
+  }
+  
+  @keyframes glow {
+    0%, 100% { text-shadow: 0 0 0px yellow; }
+    50% { text-shadow: 0 0 10px yellow; }
+  }
+  .animate-glow {
+    animation: glow 0.4s ease-in-out;
+  }
+  
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    50% { transform: translateX(3px); }
+    75% { transform: translateX(-3px); }
+  }
+  .animate-shake {
+    animation: shake 0.4s ease-in-out;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  .animate-bounce {
+    animation: bounce 0.4s ease-out;
+  }
+
+  saved at: 22:09 - 22-04-2025
+   */
+
+   @tailwind base;
+   @tailwind components;
+   @tailwind utilities;
+   
+   :root.theme-dark {
+     @apply bg-slate-950 text-white;
+     background: linear-gradient(135deg, #0f172a, #1e293b);
+     animation: darkTwinkle 10s ease-in-out infinite alternate;
+   }
+   
+   :root.theme-light {
+     @apply bg-white text-black;
+     background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+     animation: dayPulse 8s ease-in-out infinite alternate;
+   }
+   
+   body {
+     @apply font-sans transition-colors duration-300 ease-in-out;
+   }
+   
+   /* Battery FX */
+   @keyframes ping-once {
+     0% { transform: scale(1); opacity: 1; }
+     50% { transform: scale(1.25); opacity: 0.7; }
+     100% { transform: scale(1); opacity: 1; }
+   }
+   .animate-ping-once { animation: ping-once 0.3s ease-in-out; }
+   
+   @keyframes glow {
+     0%, 100% { text-shadow: 0 0 0px yellow; }
+     50% { text-shadow: 0 0 10px yellow; }
+   }
+   .animate-glow { animation: glow 0.4s ease-in-out; }
+   
+   @keyframes shake {
+     0%, 100% { transform: translateX(0); }
+     25% { transform: translateX(-3px); }
+     50% { transform: translateX(3px); }
+     75% { transform: translateX(-3px); }
+   }
+   .animate-shake { animation: shake 0.4s ease-in-out; }
+   
+   @keyframes bounce {
+     0%, 100% { transform: translateY(0); }
+     50% { transform: translateY(-8px); }
+   }
+   .animate-bounce { animation: bounce 0.4s ease-out; }
+   
+   /* Background Animations */
+   @keyframes darkTwinkle {
+     0% { background-position: 0% 50%; }
+     100% { background-position: 100% 50%; }
+   }
+   
+   @keyframes dayPulse {
+     0% { filter: brightness(1); }
+     100% { filter: brightness(1.05); }
+   }
+   

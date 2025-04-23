@@ -1,0 +1,9 @@
+# Ignore old test folders
+render-fix/
+tpmine-stacked/
+tpnopes-yulbgt/
+.env-backup
+node_modules/
+.env
+.DS_Store
+backup/
