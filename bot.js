@@ -1,9 +1,9 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-const BOT_TOKEN = '7243591113:AAGb9pkIhxEWlWlpvjbCQt1VHbYTm7LrjLw';
+const BOT_TOKEN = '8006268407:AAHp81wT5XUslBae92BSMvpRLVaKD7z40Ec';
 const bot = new TelegramBot(BOT_TOKEN, { polling: true });
 
-const WEBAPP_URL = 'https://tapgame.vercel.app/?startapp=true';
+const WEBAPP_URL = 'https://85347hfsdui84.vercel.app/?startapp=true';
 
 bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;

@@ -6,8 +6,8 @@ const app = express();
 const PORT = 5000;
 
 const allowedOrigins = [
-  'https://tapgame.vercel.app',
-  'https://tapgame-fortunafiweb3-web3s-projects-10cbd562.vercel.app',
+  'https://85347hfsdui84.vercel.app',
+  '85347hfsdui84-3tr2ld79r-web3s-projects-10cbd562.vercel.app',
 ];
 
 app.use(cors({
