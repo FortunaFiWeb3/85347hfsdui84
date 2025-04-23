@@ -6,6 +6,13 @@ console.log('[TELEGRAM DETECTED]', window.Telegram?.WebApp?.initDataUnsafe);
 
 const BACKEND = import.meta.env.VITE_BACKEND_URL;
 
+const getIcon = (e) => {
+  if (e >= 50) return '🚀';
+  if (e >= 25) return '⚙️';
+  if (e >= 10) return '💡';
+  return '🔋';
+};
+
 function App() {
   const [tgUser, setTgUser] = useState(null);
   const [energy, setEnergy] = useState(0);
@@ -150,15 +157,15 @@ useEffect(() => {
           </h2>
 
           <div className="text-5xl sm:text-6xl font-extrabold flex items-center gap-3 mb-6">
-  <span
-    role="img"
-    aria-label="battery"
-    className={`${batteryAnim} transition-transform`}
-  >
-    🔋
-  </span>
-  {energy} Energy
-</div>
+          </div>
+<span
+  role="img"
+  aria-label="energy-icon"
+  className={`${batteryAnim} transition-transform`}
+>
+  {getIcon(energy)}
+</span>
+
 
 <button
   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
