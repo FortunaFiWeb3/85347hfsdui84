@@ -24,7 +24,17 @@ useEffect(() => {
 
 useEffect(() => {
   axios.get(`${BACKEND}/energy/leaderboard`)
-    .then(res => setLeaderboard(res.data))
+    .then(res => {
+      const serverData = res.data;
+      const guestBoard = localStorage.getItem('leaderboard_guest');
+      const guestData = guestBoard ? JSON.parse(guestBoard) : [];
+
+      const combined = [...serverData, ...guestData]
+        .filter(entry => entry && typeof entry.energy === 'number') // sanitize
+        .sort((a, b) => b.energy - a.energy);
+
+      setLeaderboard(combined);
+    })
     .catch(err => console.error('[Leaderboard Error]', err));
 }, [energy]);
 
@@ -106,7 +116,21 @@ useEffect(() => {
       }
     } else {
       localStorage.setItem('energy_guest', updated);
-    }
+
+    // Save guest info to a simple local leaderboard array
+  const guestName = 'Guest';
+  const guestEntry = { id: 'guest', name: guestName, energy: updated };
+
+  const existing = localStorage.getItem('leaderboard_guest');
+  const leaderboardGuest = existing ? JSON.parse(existing) : [];
+
+  const updatedLeaderboard = [
+    ...leaderboardGuest.filter(entry => entry.id !== 'guest'),
+    guestEntry
+  ];
+
+  localStorage.setItem('leaderboard_guest', JSON.stringify(updatedLeaderboard));
+}
   };
 
   return (
@@ -174,7 +198,7 @@ useEffect(() => {
           tgUser?.id === user.id ? 'font-bold text-yellow-400' : 'text-slate-700 dark:text-slate-300'
         }`}
       >
-        <span>{index + 1}. {user.name || `User ${user.id}`}</span>
+        <span>{index + 1}. {user.name || `User ${user.id}`} {user.id === 'guest' && '(Guest)'}</span>
         <span>{user.energy}</span>
       </li>
     ))}
