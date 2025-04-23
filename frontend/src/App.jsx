@@ -157,15 +157,15 @@ useEffect(() => {
           </h2>
 
           <div className="text-5xl sm:text-6xl font-extrabold flex items-center gap-3 mb-6">
-          </div>
-<span
-  role="img"
-  aria-label="energy-icon"
-  className={`${batteryAnim} transition-transform`}
->
-  {getIcon(energy)}
-</span>
-
+  <span
+    role="img"
+    aria-label="energy-icon"
+    className={`${batteryAnim} transition-transform`}
+  >
+    {getIcon(energy)}
+  </span>
+  {energy} Energy
+</div>
 
 <button
   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
