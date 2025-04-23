@@ -332,6 +332,7 @@ function App() {
       try {
         if (window.Telegram?.WebApp) {
           window.Telegram.WebApp.ready();
+          window.Telegram.WebApp.expand();
           const user = window.Telegram.WebApp.initDataUnsafe?.user;
           console.log('[DEBUG] Telegram user:', user);
 
@@ -426,7 +427,22 @@ function App() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 text-center transition-all duration-300 relative">
-      {showTrail && (
+
+      {loading ? (
+        <p className="text-lg">Loading...</p>
+      ) : (
+        <>
+          {!tgUser && (
+            <p className="text-red-400 text-sm mb-4">
+              Telegram user not detected. This session is running as a guest.
+            </p>
+          )}
+          <h1 className="text-2xl sm:text-3xl font-bold mb-1">⚡ Energy Reactor</h1>
+          <h2 className="text-md mb-4">
+            {tgUser ? `Welcome, ${tgUser.first_name}` : 'Guest Mode'}
+          </h2>
+
+          {showTrail && (
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-10">
           {Array.from({ length: 5 }, (_, i) => (
             <span
@@ -444,20 +460,6 @@ function App() {
           ))}
         </div>
       )}
-
-      {loading ? (
-        <p className="text-lg">Loading...</p>
-      ) : (
-        <>
-          {!tgUser && (
-            <p className="text-red-400 text-sm mb-4">
-              Telegram user not detected. This session is running as a guest.
-            </p>
-          )}
-          <h1 className="text-2xl sm:text-3xl font-bold mb-1">⚡ Energy Reactor</h1>
-          <h2 className="text-md mb-4">
-            {tgUser ? `Welcome, ${tgUser.first_name}` : 'Guest Mode'}
-          </h2>
 
           <div className="text-5xl sm:text-6xl font-extrabold flex items-center gap-3 mb-6">
             <span
