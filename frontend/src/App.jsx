@@ -18,6 +18,8 @@ function App() {
   const [energy, setEnergy] = useState(0);
   const [loading, setLoading] = useState(true);
   const [batteryAnim, setBatteryAnim] = useState(''); // ⬅️ New
+  const [icon, setIcon] = useState(getIcon(0));
+  const [iconAnim, setIconAnim] = useState('');
   const [cooldown, setCooldown] = useState(0);
   const [theme, setTheme] = useState('dark');
   const [leaderboard, setLeaderboard] = useState([]);
@@ -107,7 +109,13 @@ useEffect(() => {
     setTimeout(() => setBatteryAnim(''), 400);
   
     const updated = energy + 1;
-    setEnergy(updated);  
+    setEnergy(updated);
+const nextIcon = getIcon(updated);
+if (nextIcon !== icon) {
+  setIcon(nextIcon);
+  setIconAnim('animate-icon-pop');
+  setTimeout(() => setIconAnim(''), 400);
+}
 
     if (tgUser) {
       console.log('[DEBUG] Saving to backend:', tgUser.id, updated);
@@ -157,13 +165,14 @@ useEffect(() => {
           </h2>
 
           <div className="text-5xl sm:text-6xl font-extrabold flex items-center gap-3 mb-6">
-  <span
-    role="img"
-    aria-label="energy-icon"
-    className={`${batteryAnim} transition-transform`}
-  >
-    {getIcon(energy)}
-  </span>
+          <span
+  role="img"
+  aria-label="energy-icon"
+  className={`${batteryAnim} ${iconAnim} transition-transform`}
+>
+  {icon}
+</span>
+
   {energy} Energy
 </div>
 

@@ -56,4 +56,14 @@
      0% { filter: brightness(1); }
      100% { filter: brightness(1.05); }
    }
-   
+
+   @keyframes icon-pop {
+    0%   { transform: scale(1); opacity: 1; }
+    50%  { transform: scale(1.4); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  .animate-icon-pop {
+    animation: icon-pop 0.4s ease-in-out;
+  }
+  
