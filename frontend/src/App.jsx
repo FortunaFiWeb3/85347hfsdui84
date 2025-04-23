@@ -195,10 +195,14 @@ useEffect(() => {
       <li
         key={user.id}
         className={`flex justify-between ${
-          tgUser?.id === user.id ? 'font-bold text-yellow-400' : 'text-slate-700 dark:text-slate-300'
-        }`}
+          tgUser?.id === user.id
+            ? 'font-bold text-yellow-400'
+            : user.id === 'guest'
+            ? 'text-gray-400 italic'
+            : 'text-slate-700 dark:text-slate-300'
+        }`}        
       >
-        <span>{index + 1}. {user.name || `User ${user.id}`} {user.id === 'guest' && '(Guest)'}</span>
+        <span>{index + 1}. {user.name || `User ${user.id}`}</span>
         <span>{user.energy}</span>
       </li>
     ))}
